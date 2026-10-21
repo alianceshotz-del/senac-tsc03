@@ -1,0 +1,1592 @@
+     1- Qual comando diz a distribuição GNU-Linux estou usando? 
+      Comando: cat -n /etc/os-release
+     PRETTY_NAME="Ubuntu 26.04.1 LTS"
+     2  NAME="Ubuntu"
+     3  VERSION_ID="26.04"
+     4  VERSION="26.04.1 LTS (Resolute Raccoon)"
+     5  VERSION_CODENAME=resolute
+     6  ID=ubuntu
+     7  ID_LIKE=debian
+     8  HOME_URL="https://www.ubuntu.com/"
+     9  SUPPORT_URL="https://help.ubuntu.com/"
+    10  BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+    11  PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+    12  UBUNTU_CODENAME=resolute
+    13  LOGO=ubuntu-logo
+	-----
+	2- Qual versão do LSB que estou usando
+	A- cat -n /etc/lsb-release B-lsb
+    1  DISTRIB_ID=Ubuntu
+     2  DISTRIB_RELEASE=26.04
+     3  DISTRIB_CODENAME=resolute
+     4  DISTRIB_DESCRIPTION="Ubuntu 26.04.1 LTS"
+	-----
+    3- Qual nome do meu servidor?
+	Hostname 
+	name: srvpedro
+	Hostnamectl
+	Static hostname: srvpedro
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: fc495f585e00463cb9d393e68c08fde2
+         Boot ID: e1405b01dfb84e06bad24d3e9fd397a3
+     Virtualization: oracle
+    Operating System: Ubuntu 26.04.1 LTS
+            Kernel: Linux 7.0.0-38-generic
+      Architecture: x86-64
+   Hardware Vendor: innotek GmbH
+    Hardware Model: VirtualBox
+   Hardware Version: 1.2
+   Firmware Version: VirtualBox
+   Firmware Date: Fri 2006-12-01
+    Firmware Age: 19y 10month 2w 6d
+	-----
+	
+	4- Qual versão do kernel estou usando?
+	
+	uname -a
+	
+ Linux srvpedro 7.0.0-38-generic #38-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep  4 09:10:14 UTC 2026 x86_64 GNU/Linux
+   -----
+   
+   5- Qual data e horario?
+   timedatectl
+   Local time: Wed 2026-10-21 17:48:37 UTC
+           Universal time: Wed 2026-10-21 17:48:37 UTC
+                 RTC time: Wed 2026-10-21 17:48:37
+                Time zone: Etc/UTC (UTC, +0000)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+		  -----
+		  
+   6- informações detalhadas dos endereços ip ipv4 ou ipv6
+   ip address show	Endereços IPv4, IPv6 e interfaces de rede
+ip -br address	Resumo das interfaces e dos endereços IP
+ip link show	Estado, MAC Address e informações das interfaces
+ip route show	Rotas de rede e gateway padrão
+ip neigh show	Vizinhos da rede identificados via ARP/NDP
+hostname -I	Endereços IP atribuídos ao servidor
+sudo resolvectl status	DNS e configurações de resolução de nomes
+   sudo netplan status	Exibe o estado da rede gerenciada pelo Netplan
+sudo netplan get	Mostra a configuração atual do Netplan
+sudo netplan generate	Gera a configuração para os serviços de rede
+sudo netplan apply	Aplica as configurações de rede
+sudo netplan --debug apply	Aplica as configurações exibindo informações detalhadas para diagnóstico
+sudo netplan try	Testa a configuração temporariamente e permite confirmar ou reverter
+sudo resolvectl status
+
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00 promiscuity 0 allmulti 0 minmtu 0 maxmtu 0 netns-immutable numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 tso_max_size 524280 tso_max_segs 65535 gro_max_size 65536 gso_ipv4_max_size 65536 gro_ipv4_max_size 65536
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:c5:3c:8d brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 46 maxmtu 16110 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 tso_max_size 65536 tso_max_segs 65535 gro_max_size 65536 gso_ipv4_max_size 65536 gro_ipv4_max_size 65536 parentbus pci parentdev 0000:00:03.0
+    altname enx080027c53c8d
+    inet 10.24.69.225/24 brd 10.24.69.255 scope global enp0s3
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fec5:3c8d/64 scope link proto kernel_ll
+       valid_lft forever preferred_lft forever
+Netplan: 
+     Online state: online
+    DNS Addresses: 127.0.0.53 (stub)
+       DNS Search: senac.br
+
+●  1: lo ethernet UNKNOWN/UP (unmanaged)
+      MAC Address: 00:00:00:00:00:00
+        Addresses: 127.0.0.1/8
+                   ::1/128
+
+●  2: enp0s3 ethernet UP (networkd: enp0s3)
+      MAC Address: 08:00:27:c5:3c:8d (Intel Corporation)
+        Addresses: 10.24.69.225/24
+                   fe80::a00:27ff:fec5:3c8d/64 (link)
+    DNS Addresses: 8.8.8.8
+                   8.8.4.4
+       DNS Search: senac.br
+           Routes: default via 10.24.69.1 (static)
+                   10.24.69.0/24 from 10.24.69.225 (link)
+                   fe80::/64 metric 256
+
+
+  dns: Global
+         Protocols: -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+  resolv.conf mode: stub
+
+Link 2 (enp0s3)
+    Current Scopes: DNS
+         Protocols: +DefaultRoute -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+Current DNS Server: 8.8.8.8
+       DNS Servers: 8.8.8.8 8.8.4.4
+        DNS Domain: senac.br
+     Default Route: yes
+
+7- informações detalhadas dos Hard Disck (HD), partições e utilizando dos Discos?
+Disk /dev/loop0: 66.8 MiB, 70049792 bytes, 136816 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop1: 1.51 MiB, 1581056 bytes, 3088 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop2: 1.51 MiB, 1581056 bytes, 3088 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop3: 50.1 MiB, 52535296 bytes, 102608 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop4: 66.79 MiB, 70033408 bytes, 136784 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sda: 25 GiB, 26843545600 bytes, 52428800 sectors
+Disk model: VBOX HARDDISK
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: E770C193-5CB5-4BA6-B6E2-4C08DEE63DC1
+
+Device       Start      End  Sectors Size Type
+/dev/sda1     2048     4095     2048   1M BIOS boot
+/dev/sda2     4096  4198399  4194304   2G Linux filesystem
+/dev/sda3  4198400 52426751 48228352  23G Linux filesystem
+
+
+Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 11.5 GiB, 12343836672 bytes, 24109056 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+Disk /dev/loop0: 66.8 MiB, 70049792 bytes, 136816 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop1: 1.51 MiB, 1581056 bytes, 3088 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop2: 1.51 MiB, 1581056 bytes, 3088 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop3: 50.1 MiB, 52535296 bytes, 102608 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop4: 66.79 MiB, 70033408 bytes, 136784 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sda: 25 GiB, 26843545600 bytes, 52428800 sectors
+Disk model: VBOX HARDDISK
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: E770C193-5CB5-4BA6-B6E2-4C08DEE63DC1
+
+Device       Start      End  Sectors Size Type
+/dev/sda1     2048     4095     2048   1M BIOS boot
+/dev/sda2     4096  4198399  4194304   2G Linux filesystem
+/dev/sda3  4198400 52426751 48228352  23G Linux filesystem
+
+
+Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 11.5 GiB, 12343836672 bytes, 24109056 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+senac@srvpedro:/etc/netplan$ ^C
+senac@srvpedro:/etc/netplan$ lsblk -o NAME,PATH,SIZE,TYPE,FSTYPE,FSVER,LABEL,UUID,MOUNTPOINTS
+NAME PATH                               SIZE TYPE FSTYPE FSVER LABEL UUID                                   MOUNTPOINTS
+loop0
+     /dev/loop0                        66.8M loop squash 4.0                                                /snap/core24/1643
+loop1
+     /dev/loop1                         1.5M loop squash 4.0                                                /snap/hwctl/123
+loop2
+     /dev/loop2                         1.5M loop squash 4.0                                                /snap/hwctl/131
+loop3
+     /dev/loop3                        50.1M loop squash 4.0                                                /snap/snapd/27710
+loop4
+     /dev/loop4                        66.8M loop squash 4.0                                                /snap/core24/2124
+sda  /dev/sda                            25G disk                                     
+├─sda1
+│    /dev/sda1                            1M part                                     
+├─sda2
+│    /dev/sda2                            2G part ext4   1.0         75cf913f-8797-46fd-84e7-a96f6fa40ea6   /boot
+└─sda3
+  │  /dev/sda3                           23G part LVM2_m LVM2        qUBdWc-wjI9-FReD-SnF7-NalE-uUBk-RNj3iJ
+  └─ubuntu--vg-ubuntu--lv
+     /dev/mapper/ubuntu--vg-ubuntu--lv 11.5G lvm  ext4   1.0         ae21b3f2-ad8f-487f-8a2f-a12f0f6e9426   /
+sr0  /dev/sr0                          1024M rom                                      
+
+Disk /dev/loop0: 66.8 MiB, 70049792 bytes, 136816 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop1: 1.51 MiB, 1581056 bytes, 3088 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop2: 1.51 MiB, 1581056 bytes, 3088 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop3: 50.1 MiB, 52535296 bytes, 102608 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/loop4: 66.79 MiB, 70033408 bytes, 136784 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/sda: 25 GiB, 26843545600 bytes, 52428800 sectors
+Disk model: VBOX HARDDISK
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: E770C193-5CB5-4BA6-B6E2-4C08DEE63DC1
+
+Device       Start      End  Sectors Size Type
+/dev/sda1     2048     4095     2048   1M BIOS boot
+/dev/sda2     4096  4198399  4194304   2G Linux filesystem
+/dev/sda3  4198400 52426751 48228352  23G Linux filesystem
+
+
+Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 11.5 GiB, 12343836672 bytes, 24109056 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+senac@srvpedro:/etc/netplan$ ^C
+senac@srvpedro:/etc/netplan$ lsblk -o NAME,PATH,SIZE,TYPE,FSTYPE,FSVER,LABEL,UUID,MOUNTPOINTS
+NAME PATH                               SIZE TYPE FSTYPE FSVER LABEL UUID                                   MOUNTPOINTS
+loop0
+     /dev/loop0                        66.8M loop squash 4.0                                                /snap/core24/1643
+loop1
+     /dev/loop1                         1.5M loop squash 4.0                                                /snap/hwctl/123
+loop2
+     /dev/loop2                         1.5M loop squash 4.0                                                /snap/hwctl/131
+loop3
+     /dev/loop3                        50.1M loop squash 4.0                                                /snap/snapd/27710
+loop4
+     /dev/loop4                        66.8M loop squash 4.0                                                /snap/core24/2124
+sda  /dev/sda                            25G disk                                     
+├─sda1
+│    /dev/sda1                            1M part                                     
+├─sda2
+│    /dev/sda2                            2G part ext4   1.0         75cf913f-8797-46fd-84e7-a96f6fa40ea6   /boot
+└─sda3
+  │  /dev/sda3                           23G part LVM2_m LVM2        qUBdWc-wjI9-FReD-SnF7-NalE-uUBk-RNj3iJ
+  └─ubuntu--vg-ubuntu--lv
+     /dev/mapper/ubuntu--vg-ubuntu--lv 11.5G lvm  ext4   1.0         ae21b3f2-ad8f-487f-8a2f-a12f0f6e9426   /
+sr0  /dev/sr0                          1024M rom                                      
+senac@srvpedro:/etc/netplan$ ^C
+senac@srvpedro:/etc/netplan$ df -hT
+Filesystem                        Type   Size  Used Avail Use% Mounted on
+tmpfs                             tmpfs  661M  1.1M  660M   1% /run
+/dev/mapper/ubuntu--vg-ubuntu--lv ext4    12G  5.1G  5.6G  48% /
+tmpfs                             tmpfs  1.7G     0  1.7G   0% /dev/shm
+none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+tmpfs                             tmpfs  1.7G     0  1.7G   0% /tmp
+/dev/sda2                         ext4   2.0G   96M  1.7G   6% /boot
+none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+tmpfs                             tmpfs  331M  8.0K  331M   1% /run/user/1000
+
+senac@srvpedro:/etc/netplan$ 4.0K    /mnt
+4.0K: command not found
+senac@srvpedro:/etc/netplan$ 4.0K    /cdrom
+4.0K: command not found
+senac@srvpedro:/etc/netplan$ 40K     /root
+40K: command not found
+senac@srvpedro:/etc/netplan$ 4.0K    /media
+4.0K: command not found
+senac@srvpedro:/etc/netplan$ 16K     /lost+found
+16K: command not found
+senac@srvpedro:/etc/netplan$ 4.0K    /opt
+4.0K: command not found
+senac@srvpedro:/etc/netplan$ 6.3M    /etc
+6.3M: command not found
+dev/mapper/ubuntu--vg-ubuntu--lv ext4    12G  5.1G  5.6G  48% /
+tmpfs                             tmpfs  1.7G     0  1.7G   0% /dev/shm
+none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+tmpfs                             tmpfs  1.7G     0  1.7G   0% /tmp
+/dev/sda2                         ext4   2.0G   96M  1.7G   6% /boot
+none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+├─sda2: command not found
+tmpfs                             tmpfs  331M  8.0K  331M   1% /run/user/1000
+senac@srvpedro:/etc/netplan$ │    /dev/sda2                            2G part ext4   1.0         75cf913f-8797-46fd-84e7-a96f6fa40ea6   /boot
+senac@srvpedro:/etc/netplan$ ^C
+senac@srvpedro:/etc/netplan$ sudo du -xhd1 / 2>/dev/null
+4.0K    /mnt
+4.0K    /cdrom
+40K     /root
+4.0K    /media
+16K     /lost+found
+4.0K    /opt
+6.3M    /etc
+│: command not found
+senac@srvpedro:/etc/netplan$ └─sda3
+└─sda3: command not found
+senac@srvpedro:/etc/netplan$   │  /dev/sda3                           23G part LVM2_m LVM2        qUBdWc-wjI9-FReD-SnF7-NalE-uUBk-RNj3iJ
+│: command not found
+senac@srvpedro:/etc/netplan$   └─ubuntu--vg-ubuntu--lv
+└─ubuntu--vg-ubuntu--lv: command not found
+senac@srvpedro:/etc/netplan$      /dev/mapper/ubuntu--vg-ubuntu--lv 11.5G lvm  ext4   1.0         ae21b3f2-ad8f-487f-8a2f-a12f0f6e9426   /
+-bash: /dev/mapper/ubuntu--vg-ubuntu--lv: Permission denied
+senac@srvpedro:/etc/netplan$ sr0  /dev/sr0                          1024M rom
+Command 'sr0' not found, did you mean:
+  command 'srg' from deb srg (1.3.6-2.1build1)
+  command 'sre' from deb node-speech-rule-engine (4.0.7+~0.1.31-2)
+  command 'sr' from deb surfraw (2.3.0-2build1)
+  command 'srm' from deb secure-delete (3.1-12build1)
+  command 'src' from deb simple-revision-control (1.41-1)
+  command 'srt' from deb python3-pysrt (1.1.2-2)
+  command 'srs' from deb srs (0.31-9)
+Try: sudo apt install <deb name>
+senac@srvpedro:/etc/netplan$ senac@srvpedro:/etc/netplan$ ^C
+-bash: senac@srvpedro:/etc/netplan$: No such file or directory
+senac@srvpedro:/etc/netplan$ senac@srvpedro:/etc/netplan$ df -hT
+-bash: senac@srvpedro:/etc/netplan$: No such file or directory
+senac@srvpedro:/etc/netplan$ Filesystem                        Type   Size  Used Avail Use% Mounted on
+Filesystem: command not found
+senac@srvpedro:/etc/netplan$ tmpfs                             tmpfs  661M  1.1M  660M   1% /run
+Command 'tmpfs' not found, did you mean:
+  command 'tmfs' from deb tmfs (7-1build2)
+Try: sudo apt install <deb name>
+senac@srvpedro:/etc/netplan$ /dev/mapper/ubuntu--vg-ubuntu--lv ext4    12G  5.1G  5.6G  48% /
+-bash: /dev/mapper/ubuntu--vg-ubuntu--lv: Permission denied
+senac@srvpedro:/etc/netplan$ tmpfs                             tmpfs  1.7G     0  1.7G   0% /dev/shm
+Command 'tmpfs' not found, did you mean:
+  command 'tmfs' from deb tmfs (7-1build2)
+Try: sudo apt install <deb name>
+senac@srvpedro:/etc/netplan$ none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+Command 'none' not found, did you mean:
+  command 'sone' from snap sone (0.22.1)
+  command 'nona' from deb hugin-tools (2025.0.1+dfsg-1build1)
+  command 'node' from deb nodejs (22.22.1+dfsg+~cs22.19.15-1ubuntu1)
+  command 'note' from deb note (1.3.26-3build1)
+See 'snap info <snapname>' for additional versions.
+senac@srvpedro:/etc/netplan$ none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+Command 'none' not found, did you mean:
+  command 'sone' from snap sone (0.22.1)
+  command 'node' from deb nodejs (22.22.1+dfsg+~cs22.19.15-1ubuntu1)
+  command 'note' from deb note (1.3.26-3build1)
+  command 'nona' from deb hugin-tools (2025.0.1+dfsg-1build1)
+See 'snap info <snapname>' for additional versions.
+senac@srvpedro:/etc/netplan$ tmpfs                             tmpfs  1.7G     0  1.7G   0% /tmp
+Command 'tmpfs' not found, did you mean:
+  command 'tmfs' from deb tmfs (7-1build2)
+Try: sudo apt install <deb name>
+senac@srvpedro:/etc/netplan$ /dev/sda2                         ext4   2.0G   96M  1.7G   6% /boot
+-bash: /dev/sda2: Permission denied
+senac@srvpedro:/etc/netplan$ none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+Command 'none' not found, did you mean:
+  command 'sone' from snap sone (0.22.1)
+  command 'nona' from deb hugin-tools (2025.0.1+dfsg-1build1)
+  command 'node' from deb nodejs (22.22.1+dfsg+~cs22.19.15-1ubuntu1)
+  command 'note' from deb note (1.3.26-3build1)
+See 'snap info <snapname>' for additional versions.
+senac@srvpedro:/etc/netplan$ none                              tmpfs  1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+Command 'none' not found, did you mean:
+  command 'sone' from snap sone (0.22.1)
+  command 'note' from deb note (1.3.26-3build1)
+  command 'node' from deb nodejs (22.22.1+dfsg+~cs22.19.15-1ubuntu1)
+  command 'nona' from deb hugin-tools (2025.0.1+dfsg-1build1)
+See 'snap info <snapname>' for additional versions.
+senac@srvpedro:/etc/netplan$ tmpfs                             tmpfs  331M  8.0K  331M   1% /run/user/1000
+Command 'tmpfs' not found, did you mean:
+  command 'tmfs' from deb tmfs (7-1build2)
+Try: sudo apt install <deb name>
+senac@srvpedro:/etc/netplan$ senac@srvpedro:/etc/netplan$ ^C
+-bash: senac@srvpedro:/etc/netplan$: No such file or directory
+senac@srvpedro:/etc/netplan$ senac@srvpedro:/etc/netplan$ sudo du -xhd1 / 2>/dev/null
+senac@srvpedro:/etc/netplan$ 4.0K    /mnt
+4.0K: command not found
+senac@srvpedro:/etc/netplan$ 4.0K    /cdrom
+4.0K: command not found
+senac@srvpedro:/etc/netplan$ 40K     /root
+40K: command not found
+senac@srvpedro:/etc/netplan$ 4.0K    /media
+4.0K: command not found
+senac@srvpedro:/etc/netplan$ 16K     /lost+found
+16K: command not found
+senac@srvpedro:/etc/netplan$ 4.0K    /opt
+4.0K: command not found
+senac@srvpedro:/etc/netplan$ 6.3M    /etc
+6.3M: command not found
+
+
+8- Informações detalhadas da Memória RAN do servidor
+MemTotal:        3382032 kB
+MemFree:         2105684 kB
+MemAvailable:    2790928 kB
+Buffers:           98812 kB
+Cached:           710404 kB
+SwapCached:            0 kB
+Active:           351788 kB
+Inactive:         548776 kB
+Active(anon):      99860 kB
+Inactive(anon):        0 kB
+Active(file):     251928 kB
+Inactive(file):   548776 kB
+Unevictable:        9612 kB
+Mlocked:            9612 kB
+SwapTotal:       2093052 kB
+SwapFree:        2093052 kB
+Zswap:                 0 kB
+Zswapped:              0 kB
+Dirty:                 8 kB
+Writeback:             0 kB
+AnonPages:        100968 kB
+Mapped:           124716 kB
+Shmem:              1084 kB
+KReclaimable:     169612 kB
+Slab:             228968 kB
+SReclaimable:     169612 kB
+SUnreclaim:        59356 kB
+KernelStack:        2560 kB
+PageTables:         3744 kB
+SecPageTables:         0 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     3784068 kB
+Committed_AS:     664768 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       22352 kB
+VmallocChunk:          0 kB
+Percpu:             1064 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:    190464 kB
+FilePmdMapped:         0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+Unaccepted:            0 kB
+Balloon:               0 kB
+GPUActive:         19232 kB
+GPUReclaim:            0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      120768 kB
+DirectMap2M:     3975168 kB
+
+#09 — Informações detalhadas do processador
+
+Architecture:                x86_64
+  CPU op-mode(s):            32-bit, 64-bit
+  Address sizes:             39 bits physical, 48 bits virtual
+  Byte Order:                Little Endian
+CPU(s):                      2
+  On-line CPU(s) list:       0,1
+Vendor ID:                   GenuineIntel
+  Model name:                Intel(R) Core(TM) i5-9500 CPU @ 3.00GHz
+    CPU family:              6
+    Model:                   158
+    Thread(s) per core:      1
+    Core(s) per socket:      2
+    Socket(s):               1
+    Stepping:                10
+    BogoMIPS:                6000.02
+    Flags:                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni
+                             pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch pti fsgsbase bmi1 avx2 bmi2 invpcid rdseed adx clflushopt arat md_clear flus
+                             h_l1d arch_capabilities
+Virtualization features:
+  Hypervisor vendor:         KVM
+  Virtualization type:       full
+Caches (sum of all):
+  L1d:                       64 KiB (2 instances)
+  L1i:                       64 KiB (2 instances)
+  L2:                        512 KiB (2 instances)
+  L3:                        18 MiB (2 instances)
+NUMA:
+  NUMA node(s):              1
+  NUMA node0 CPU(s):         0,1
+Vulnerabilities:
+  Gather data sampling:      Not affected
+  Ghostwrite:                Not affected
+  Indirect target selection: Mitigation; Aligned branch/return thunks
+  Itlb multihit:             Not affected
+  L1tf:                      Mitigation; PTE Inversion
+  Mds:                       Mitigation; Clear CPU buffers; SMT Host state unknown
+  Meltdown:                  Mitigation; PTI
+  Mmio stale data:           Mitigation; Clear CPU buffers; SMT Host state unknown
+  Old microcode:             Not affected
+  Reg file data sampling:    Not affected
+  Retbleed:                  Vulnerable
+  Spec rstack overflow:      Not affected
+  Spec store bypass:         Vulnerable
+  Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+  Spectre v2:                Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Retpoline
+  Srbds:                     Unknown: Dependent on hypervisor status
+  Tsa:                       Not affected
+  Tsx async abort:           Not affected
+  Vmscape:                   Not affected
+  
+  rchitecture:                x86_64
+  CPU op-mode(s):            32-bit, 64-bit
+  Address sizes:             39 bits physical, 48 bits virtual
+  Byte Order:                Little Endian
+CPU(s):                      2
+  On-line CPU(s) list:       0,1
+Vendor ID:                   GenuineIntel
+  Model name:                Intel(R) Core(TM) i5-9500 CPU @ 3.00GHz
+    CPU family:              6
+    Model:                   158
+    Thread(s) per core:      1
+    Core(s) per socket:      2
+    Socket(s):               1
+    Stepping:                10
+    BogoMIPS:                6000.02
+    Flags:                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni
+                             pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch pti fsgsbase bmi1 avx2 bmi2 invpcid rdseed adx clflushopt arat md_clear flus
+                             h_l1d arch_capabilities
+Virtualization features:
+  Hypervisor vendor:         KVM
+  Virtualization type:       full
+Caches (sum of all):
+  L1d:                       64 KiB (2 instances)
+  L1i:                       64 KiB (2 instances)
+  L2:                        512 KiB (2 instances)
+  L3:                        18 MiB (2 instances)
+NUMA:
+  NUMA node(s):              1
+  NUMA node0 CPU(s):         0,1
+Vulnerabilities:
+  Gather data sampling:      Not affected
+  Ghostwrite:                Not affected
+  Indirect target selection: Mitigation; Aligned branch/return thunks
+  Itlb multihit:             Not affected
+  L1tf:                      Mitigation; PTE Inversion
+  Mds:                       Mitigation; Clear CPU buffers; SMT Host state unknown
+  Meltdown:                  Mitigation; PTI
+  Mmio stale data:           Mitigation; Clear CPU buffers; SMT Host state unknown
+  Old microcode:             Not affected
+  Reg file data sampling:    Not affected
+  Retbleed:                  Vulnerable
+  Spec rstack overflow:      Not affected
+  Spec store bypass:         Vulnerable
+  Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+  Spectre v2:                Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Retpoline
+  Srbds:                     Unknown: Dependent on hypervisor status
+  Tsa:                       Not affected
+  Tsx async abort:           Not affected
+  Vmscape:                   Not affected
+
+
+
+10- Lrvantamento de todos os softwares que precisam ser atualizados no servidor?
+
+3cpio   0.14.0-1ubuntu1 installed
+adduser 3.153ubuntu1    installed
+amd64-microcode 3.20251202.1ubuntu2     installed
+apparmor        5.0.2-0ubuntu1~26.04.1  installed
+apport  2.34.1-0ubuntu0.1       installed
+apport-core-dump-handler        2.34.1-0ubuntu0.1       installed
+apport-symptoms 0.25build1      installed
+appstream       1.1.2-1 installed
+apt     3.2.0   installed
+base-files      14ubuntu6.2     installed
+base-passwd     3.6.8   installed
+bash    5.3-2ubuntu1    installed
+bash-completion 1:2.16.0-8build1        installed
+bc      1.07.1-4build1  installed
+bcache-tools    1.0.8-5ubuntu1  installed
+bind9-dnsutils  1:9.20.24-1ubuntu0.4    installed
+bind9-host      1:9.20.24-1ubuntu0.4    installed
+bind9-libs:amd64        1:9.20.24-1ubuntu0.4    installed
+binutils        2.46-3ubuntu2   installed
+binutils-common:amd64   2.46-3ubuntu2   installed
+binutils-x86-64-linux-gnu       2.46-3ubuntu2   installed
+bolt    0.9.10-1        installed
+bpfcc-tools     0.35.0+ds-1ubuntu2      installed
+bpftool 7.7.0+7.0.0-38.38       installed
+bpftrace        0.25.0-1ubuntu1 installed
+bsdextrautils   2.41.3-3ubuntu2.2       installed
+bsdutils        1:2.41.3-3ubuntu2.2     installed
+btrfs-progs     6.17.1-1build1  installed
+busybox-initramfs       1:1.37.0-7ubuntu1       installed
+busybox-static  1:1.37.0-7ubuntu1       installed
+ca-certificates 20260601~26.04.1        installed
+chrony  4.8-2ubuntu1    installed
+cloud-guest-utils       0.33-1build1    installed
+cloud-init      26.1-0ubuntu3~26.04.1   installed
+cloud-init-base 26.1-0ubuntu3~26.04.1   installed
+cloud-initramfs-copymods        0.58ubuntu      installed
+cloud-initramfs-dyn-netconf     0.58ubuntu      installed
+command-not-found       23.04.0build1   installed
+console-setup   1.237ubuntu3.1  installed
+console-setup-linux     1.237ubuntu3.1  installed
+coreutils       9.5-1ubuntu2+0.0.0~ubuntu25     installed
+coreutils-from-uutils   0.0.0~ubuntu25  installed
+cpio    2.15+dfsg-2.1ubuntu0.1  installed
+crash   9.0.1+~16.3-1ubuntu1    installed
+cron    3.0pl1-200ubuntu1       installed
+cron-daemon-common      3.0pl1-200ubuntu1       installed
+cryptsetup      2:2.8.4-1ubuntu4        installed
+cryptsetup-bin  2:2.8.4-1ubuntu4        installed
+curl    8.18.0-1ubuntu2.8       installed
+dash    0.5.12-12ubuntu3        installed
+dbus    1.16.2-2ubuntu4 installed
+dbus-bin        1.16.2-2ubuntu4 installed
+dbus-daemon     1.16.2-2ubuntu4 installed
+dbus-session-bus-common 1.16.2-2ubuntu4 installed
+dbus-system-bus-common  1.16.2-2ubuntu4 installed
+dbus-user-session       1.16.2-2ubuntu4 installed
+debconf 1.5.92  installed
+debconf-i18n    1.5.92  installed
+debianutils     5.23.2build1    installed
+dhcpcd-base     1:10.3.0-7      installed
+diffutils       1:3.12-1ubuntu0.1       installed
+dirmngr 2.4.8-4ubuntu3.1        installed
+distro-info     1.15    installed
+distro-info-data        0.72-0ubuntu0.26.04.1   installed
+dmeventd        2:1.02.205-2ubuntu3     installed
+dmidecode       3.6-2ubuntu1    installed
+dmsetup 2:1.02.205-2ubuntu3     installed
+dosfstools      4.2-1.2build1   installed
+dpkg    1.23.7ubuntu1   installed
+dracut  110-11ubuntu0.1 installed
+dracut-core     110-11ubuntu0.1 installed
+dracut-install  110-11ubuntu0.1 installed
+dracut-network  110-11ubuntu0.1 installed
+e2fsprogs       1.47.2-3ubuntu4 installed
+eatmydata       131-2build1     installed
+ed      1.22.4-1        installed
+eject   2.41.3-3ubuntu2.2       installed
+ethtool 1:6.19-1        installed
+exfatprogs      1.3.2-1 installed
+fdisk   2.41.3-3ubuntu2.2       installed
+file    1:5.46-5build2  installed
+finalrd 9build2 installed
+findutils       4.10.0-3build2  installed
+firmware-sof-signed     2025.12.2-1     installed
+fonts-ubuntu-console    0.869+git20240321-0ubuntu2      installed
+friendly-recovery       0.2.42build1    installed
+ftp     20260211-1      installed
+fuse3   3.18.2-1        installed
+fwupd   2.1.1-1ubuntu3.1        installed
+fwupd-signed    1.55+1.7-1      installed
+gawk    1:5.3.2-1ubuntu1.1      installed
+gcc-16-base:amd64       16-20260322-1ubuntu1    installed
+gdisk   1.0.10-2build1  installed
+gettext-base    0.23.2-1        installed
+gir1.2-girepository-3.0:amd64   2.88.0-1ubuntu0.1       installed
+gir1.2-glib-2.0:amd64   2.88.0-1ubuntu0.1       installed
+gir1.2-packagekitglib-1.0       1.3.4-3ubuntu1.2        installed
+git     1:2.53.0-1ubuntu1.1     installed
+git-man 1:2.53.0-1ubuntu1.1     installed
+gnu-coreutils   9.7-3ubuntu2.1  installed
+gnupg   2.4.8-4ubuntu3.1        installed
+gnupg-l10n      2.4.8-4ubuntu3.1        installed
+gnupg-utils     2.4.8-4ubuntu3.1        installed
+gpg     2.4.8-4ubuntu3.1        installed
+gpg-agent       2.4.8-4ubuntu3.1        installed
+gpg-wks-client  2.4.8-4ubuntu3.1        installed
+gpgconf 2.4.8-4ubuntu3.1        installed
+gpgsm   2.4.8-4ubuntu3.1        installed
+gpgv    2.4.8-4ubuntu3.1        installed
+grep    3.12-1  installed
+groff-base      1.23.0-10       installed
+grub-gfxpayload-lists   0.7build3       installed
+grub-pc 2.14-2ubuntu2.1 installed
+grub-pc-bin     2.14-2ubuntu2.1 installed
+grub2-common    2.14-2ubuntu2.1 installed
+gzip    1.14-1~exp2ubuntu1.1    installed
+hdparm  9.65+ds-1.1build1       installed
+hostname        3.25build1      installed
+htop    3.4.1-5build2   installed
+hwctl   0.11.0-0ubuntu1 installed
+hwdata  0.394-1build1   installed
+ibverbs-providers:amd64 61.0-2ubuntu3   installed
+ieee-data       20240722build1  installed
+inetutils-telnet        2:2.7-2ubuntu1.1        installed
+info    7.2-5ubuntu2    installed
+init    1.69    installed
+init-system-helpers     1.69    installed
+initramfs-tools-bin     0.151ubuntu1    installed
+initramfs-tools-core    0.151ubuntu1    installed
+install-info    7.2-5ubuntu2    installed
+intel-microcode 3.20260210.1ubuntu2     installed
+iproute2        6.19.0-1ubuntu1.1       installed
+iptables        1.8.11-2ubuntu3 installed
+iputils-ping    3:20250605-1ubuntu1     installed
+iputils-tracepath       3:20250605-1ubuntu1     installed
+iso-codes       4.20.1-1        installed
+iucode-tool     2.3.1-3build2   installed
+jq      1.8.1-4ubuntu2  installed
+kbd     2.7.1-2ubuntu2  installed
+kdump-tools     1:1.10.7ubuntu3 installed
+kexec-tools     1:2.0.32-3ubuntu1       installed
+keyboard-configuration  1.237ubuntu3.1  installed
+klibc-utils     2.0.14-1ubuntu2 installed
+kmod    34.2-2ubuntu2   installed
+kpartx  0.14.3-2ubuntu1 installed
+krb5-locales    1.22.1-2ubuntu4.1       installed
+landscape-common        26.02.2-0ubuntu1        installed
+less    668-1build1     installed
+libacl1:amd64   2.3.2-2 installed
+libaio1t64:amd64        0.3.113-8build1 installed
+libapparmor1:amd64      5.0.2-0ubuntu1~26.04.1  installed
+libappstream5:amd64     1.1.2-1 installed
+libapt-pkg7.0:amd64     3.2.0   installed
+libassuan9:amd64        3.0.2-2build1   installed
+libatasmart4:amd64      0.19-6  installed
+libatomic1:amd64        16-20260322-1ubuntu1    installed
+libattr1:amd64  1:2.5.2-4ubuntu0.1      installed
+libaudit-common 1:4.1.2-1ubuntu0.1      installed
+libaudit1:amd64 1:4.1.2-1ubuntu0.1      installed
+libbinutils:amd64       2.46-3ubuntu2   installed
+libblkid1:amd64 2.41.3-3ubuntu2.2       installed
+libblockdev-crypto3:amd64       3.4.0-1 installed
+libblockdev-fs3:amd64   3.4.0-1 installed
+libblockdev-loop3:amd64 3.4.0-1 installed
+libblockdev-mdraid3:amd64       3.4.0-1 installed
+libblockdev-nvme3:amd64 3.4.0-1 installed
+libblockdev-part3:amd64 3.4.0-1 installed
+libblockdev-smart3:amd64        3.4.0-1 installed
+libblockdev-swap3:amd64 3.4.0-1 installed
+libblockdev-utils3:amd64        3.4.0-1 installed
+libblockdev3:amd64      3.4.0-1 installed
+libbpf1:amd64   1:1.6.3-1ubuntu1        installed
+libbpfcc:amd64  0.35.0+ds-1ubuntu2      installed
+libbrotli1:amd64        1.2.0-3build1   installed
+libbsd0:amd64   0.12.2-2build2  installed
+libbytesize-common      2.12-1  installed
+libbytesize1:amd64      2.12-1  installed
+libbz2-1.0:amd64        1.0.8-6ubuntu0.1        installed
+libc-bin        2.43-2ubuntu2.4 installed
+libc-dev-bin    2.43-2ubuntu2.4 installed
+libc-gconv-modules-extra:amd64  2.43-2ubuntu2.4 installed
+libc6:amd64     2.43-2ubuntu2.4 installed
+libc6-dev:amd64 2.43-2ubuntu2.4 installed
+libcap-ng0:amd64        0.8.5-4build5   installed
+libcap2:amd64   1:2.75-10ubuntu2        installed
+libcap2-bin     1:2.75-10ubuntu2        installed
+libcbor0.10:amd64       0.10.2-2ubuntu3 installed
+libclang-cpp21  1:21.1.8-6ubuntu1       installed
+libclang1-21    1:21.1.8-6ubuntu1       installed
+libcom-err2:amd64       1.47.2-3ubuntu4 installed
+libcrypt1:amd64 1:4.5.1-1       installed
+libcryptsetup12:amd64   2:2.8.4-1ubuntu4        installed
+libctf-nobfd0:amd64     2.46-3ubuntu2   installed
+libctf0:amd64   2.46-3ubuntu2   installed
+libcurl3t64-gnutls:amd64        8.18.0-1ubuntu2.8       installed
+libcurl4t64:amd64       8.18.0-1ubuntu2.8       installed
+libdb5.3t64:amd64       5.3.28+dfsg2-10ubuntu1  installed
+libdbus-1-3:amd64       1.16.2-2ubuntu4 installed
+libdebconfclient0:amd64 0.280ubuntu1    installed
+libdebuginfod-common    0.194-4 installed
+libdebuginfod1t64:amd64 0.194-4 installed
+libdevmapper-event1.02.1:amd64  2:1.02.205-2ubuntu3     installed
+libdevmapper1.02.1:amd64        2:1.02.205-2ubuntu3     installed
+libdrm-amdgpu1:amd64    2.4.131-1       installed
+libdrm-common   2.4.131-1       installed
+libdrm2:amd64   2.4.131-1       installed
+libduktape207:amd64     2.7.0+tests-0ubuntu4    installed
+libdw1t64:amd64 0.194-4 installed
+libeatmydata1:amd64     131-2build1     installed
+libedit2:amd64  3.1-20251016-1  installed
+libefiboot1t64:amd64    39-2    installed
+libefivar1t64:amd64     39-2    installed
+libelf1t64:amd64        0.194-4 installed
+liberror-perl   0.17030-1       installed
+libestr0:amd64  0.1.11-2build1  installed
+libevdev2:amd64 1.13.6+dfsg-1   installed
+libevent-core-2.1-7t64:amd64    2.1.12-stable-10ubuntu0.2       installed
+libexpat1:amd64 2.7.4-1ubuntu0.2        installed
+libext2fs2t64:amd64     1.47.2-3ubuntu4 installed
+libfastjson4:amd64      1.2304.0-2build1        installed
+libfdisk1:amd64 2.41.3-3ubuntu2.2       installed
+libffi8:amd64   3.5.2-4 installed
+libfido2-1:amd64        1.16.0-2build1  installed
+libflashrom1:amd64      1.6.0-2ubuntu1.1        installed
+libfreetype6:amd64      2.14.2+dfsg-1ubuntu0.2  installed
+libfribidi0:amd64       1.0.16-5        installed
+libftdi1-2:amd64        1.6~rc1-1build1 installed
+libfuse3-4:amd64        3.18.2-1        installed
+libfwupd3:amd64 2.1.1-1ubuntu3.1        installed
+libfyaml0:amd64 0.9.4-1 installed
+libgcc-s1:amd64 16-20260322-1ubuntu1    installed
+libgcrypt20:amd64       1.12.0-2ubuntu1.1       installed
+libgdbm-compat4t64:amd64        1.26-1build1    installed
+libgdbm6t64:amd64       1.26-1build1    installed
+libgirepository-2.0-0:amd64     2.88.0-1ubuntu0.1       installed
+libglib2.0-0t64:amd64   2.88.0-1ubuntu0.1       installed
+libglib2.0-bin  2.88.0-1ubuntu0.1       installed
+libglib2.0-data 2.88.0-1ubuntu0.1       installed
+libgmp10:amd64  2:6.3.0+dfsg-5ubuntu2   installed
+libgnutls30t64:amd64    3.8.12-2ubuntu1.1       installed
+libgpg-error-l10n       1.58-2  installed
+libgpg-error0:amd64     1.58-2  installed
+libgpgme45:amd64        2.0.1-2build1   installed
+libgpm2:amd64   1.20.7-12build1 installed
+libgprofng0:amd64       2.46-3ubuntu2   installed
+libgssapi-krb5-2:amd64  1.22.1-2ubuntu4.1       installed
+libgstreamer1.0-0:amd64 1.28.2-1        installed
+libgudev-1.0-0:amd64    1:238-7build1   installed
+libhogweed6t64:amd64    3.10.2-1        installed
+libibverbs1:amd64       61.0-2ubuntu3   installed
+libicu78:amd64  78.2-2ubuntu1   installed
+libidn2-0:amd64 2.3.8-4build1   installed
+libimobiledevice-1.0-6:amd64    1.4.0-1build1   installed
+libimobiledevice-glue-1.0-0     1.3.2-2build1   installed
+libinih1:amd64  61-1ubuntu1     installed
+libintl-perl    1.37-1  installed
+libintl-xs-perl 1.37-1  installed
+libip4tc2:amd64 1.8.11-2ubuntu3 installed
+libip6tc2:amd64 1.8.11-2ubuntu3 installed
+libisns0t64:amd64       0.101-2.1ubuntu0.1      installed
+libjansson4:amd64       2.14-2build4    installed
+libjcat1:amd64  0.2.5-1build1   installed
+libjemalloc2:amd64      5.3.0-4 installed
+libjq1:amd64    1.8.1-4ubuntu2  installed
+libjs-sphinxdoc 8.2.3-12        installed
+libjson-c5:amd64        0.18+ds-3       installed
+libjson-glib-1.0-0:amd64        1.10.8+ds-2     installed
+libjson-glib-1.0-common 1.10.8+ds-2     installed
+libk5crypto3:amd64      1.22.1-2ubuntu4.1       installed
+libkeyutils1:amd64      1.6.3-6ubuntu3  installed
+libklibc:amd64  2.0.14-1ubuntu2 installed
+libkmod2:amd64  34.2-2ubuntu2   installed
+libkrb5-3:amd64 1.22.1-2ubuntu4.1       installed
+libkrb5support0:amd64   1.22.1-2ubuntu4.1       installed
+libksba8:amd64  1.6.7-2build1   installed
+liblastlog2-2:amd64     2.41.3-3ubuntu2.2       installed
+libldap-common  2.6.10+dfsg-1ubuntu5    installed
+libldap2:amd64  2.6.10+dfsg-1ubuntu5    installed
+libllvm21:amd64 1:21.1.8-6ubuntu1       installed
+liblmdb0:amd64  0.9.31-1build2  installed
+liblocale-gettext-perl  1.07-8  installed
+liblsof0        4.99.4+dfsg-2build2     installed
+liblvm2cmd2.03:amd64    2.03.31-2ubuntu3        installed
+liblz4-1:amd64  1.10.0-8        installed
+liblzma5:amd64  5.8.3-1 installed
+liblzo2-2:amd64 2.10-3build2    installed
+libmagic-mgc    1:5.46-5build2  installed
+libmagic1t64:amd64      1:5.46-5build2  installed
+libmaxminddb0:amd64     1.12.2-1build2  installed
+libmbim-glib4:amd64     1.32.0-2ubuntu1 installed
+libmbim-proxy   1.32.0-2ubuntu1 installed
+libmbim-utils   1.32.0-2ubuntu1 installed
+libmd0:amd64    1.1.0-2build4   installed
+libmm-glib0:amd64       1.25.95-1ubuntu1        installed
+libmnl0:amd64   1.0.5-3build1   installed
+libmodule-find-perl     0.17-1  installed
+libmount1:amd64 2.41.3-3ubuntu2.2       installed
+libmpathcmd0    0.14.3-2ubuntu1 installed
+libmpathpersist0        0.14.3-2ubuntu1 installed
+libmpfr6:amd64  4.2.2-3 installed
+libmspack0t64:amd64     0.11-1.1build2  installed
+libmultipath0   0.14.3-2ubuntu1 installed
+libncurses6:amd64       6.6+20251231-1  installed
+libncursesw6:amd64      6.6+20251231-1  installed
+libnetfilter-conntrack3:amd64   1.1.1-1 installed
+libnetplan1:amd64       1.2-1ubuntu5.1  installed
+libnettle8t64:amd64     3.10.2-1        installed
+libnewt0.52:amd64       0.52.25-1ubuntu3        installed
+libnfnetlink0:amd64     1.0.2-3build1   installed
+libnftables1:amd64      1.1.6-1 installed
+libnftnl11:amd64        1.3.1-1 installed
+libnghttp2-14:amd64     1.68.0-2ubuntu0.2       installed
+libnl-3-200:amd64       3.12.0-2        installed
+libnl-genl-3-200:amd64  3.12.0-2        installed
+libnl-route-3-200:amd64 3.12.0-2        installed
+libnpth0t64:amd64       1.8-3build1     installed
+libnspr4:amd64  2:4.38.2-1ubuntu1       installed
+libnss-systemd:amd64    259.5-0ubuntu3.4        installed
+libnss3:amd64   2:3.120-1ubuntu2.1      installed
+libntfs-3g89t64:amd64   1:2022.10.3-5ubuntu1.1  installed
+libnuma1:amd64  2.0.19-1build1  installed
+libnvme1t64:amd64       1.16.1-4        installed
+libonig5:amd64  6.9.10-1build1  installed
+libopeniscsiusr 2.1.11-3ubuntu3.1       installed
+libp11-kit0:amd64       0.26.2-2        installed
+libpackagekit-glib2-18:amd64    1.3.4-3ubuntu1.2        installed
+libpam-cap:amd64        1:2.75-10ubuntu2        installed
+libpam-modules:amd64    1.7.0-5ubuntu3.2        installed
+libpam-modules-bin      1.7.0-5ubuntu3.2        installed
+libpam-runtime  1.7.0-5ubuntu3.2        installed
+libpam-systemd:amd64    259.5-0ubuntu3.4        installed
+libpam0g:amd64  1.7.0-5ubuntu3.2        installed
+libparted2t64:amd64     3.6-6   installed
+libpcap0.8t64:amd64     1.10.6-1ubuntu1.1       installed
+libpci3:amd64   1:3.14.0-1build2        installed
+libpcre2-8-0:amd64      10.46-1build1   installed
+libperl5.40:amd64       5.40.1-7ubuntu0.3       installed
+libpipeline1:amd64      1.5.8-2 installed
+libplist-2.0-4:amd64    2.7.0+git20250820-1build1       installed
+libplymouth5:amd64      24.004.60+git20250831.4a3c171d-0ubuntu8 installed
+libpng16-16t64:amd64    1.6.57-1ubuntu0.1       installed
+libpolkit-agent-1-0:amd64       127-2ubuntu1.1  installed
+libpolkit-gobject-1-0:amd64     127-2ubuntu1.1  installed
+libpopt0:amd64  1.19+dfsg-2build1       installed
+libproc-processtable-perl:amd64 0.637-1 installed
+libproc2-0:amd64        2:4.0.4-9ubuntu1        installed
+libpsl5t64:amd64        0.21.2-1.1build2        installed
+libpython3-stdlib:amd64 3.14.3-0ubuntu2 installed
+libpython3.14:amd64     3.14.4-1ubuntu0.2       installed
+libpython3.14-minimal:amd64     3.14.4-1ubuntu0.2       installed
+libpython3.14-stdlib:amd64      3.14.4-1ubuntu0.2       installed
+libqmi-glib5:amd64      1.38.0-1        installed
+libqmi-proxy    1.38.0-1        installed
+libqmi-utils    1.38.0-1        installed
+libqrtr-glib0:amd64     1.2.2-2ubuntu1  installed
+libreadline8t64:amd64   8.3-4   installed
+librtmp1:amd64  2.4+20151223.gitfa8646d.1-3     installed
+libsasl2-2:amd64        2.1.28+dfsg1-9ubuntu3   installed
+libsasl2-modules:amd64  2.1.28+dfsg1-9ubuntu3   installed
+libsasl2-modules-db:amd64       2.1.28+dfsg1-9ubuntu3   installed
+libseccomp2:amd64       2.6.0-2ubuntu5  installed
+libselinux1:amd64       3.9-4build1     installed
+libsemanage-common      3.9-1build1     installed
+libsemanage2:amd64      3.9-1build1     installed
+libsensors-config       1:3.6.2-2build1 installed
+libsensors5:amd64       1:3.6.2-2build1 installed
+libsepol2:amd64 3.9-2   installed
+libsframe3:amd64        2.46-3ubuntu2   installed
+libsgutils2-1.48:amd64  1.48-3ubuntu3.2 installed
+libslang2:amd64 2.3.3-5build1   installed
+libsmartcols1:amd64     2.41.3-3ubuntu2.2       installed
+libsnappy1v5:amd64      1.2.2-2 installed
+libsodium23:amd64       1.0.18-2        installed
+libsort-naturally-perl  1.03-4  installed
+libsqlite3-0:amd64      3.46.1-9ubuntu0.3       installed
+libss2:amd64    1.47.2-3ubuntu4 installed
+libssh2-1t64:amd64      1.11.1-1ubuntu0.26.04.4 installed
+libssl3t64:amd64        3.5.5-1ubuntu3.7        installed
+libstdc++6:amd64        16-20260322-1ubuntu1    installed
+libstemmer0d:amd64      3.0.1-1 installed
+libsystemd-shared:amd64 259.5-0ubuntu3.4        installed
+libsystemd0:amd64       259.5-0ubuntu3.4        installed
+libtasn1-6:amd64        4.21.0-2        installed
+libtcl8.6:amd64 8.6.17+dfsg-1build1     installed
+libterm-readkey-perl    2.38-2build5    installed
+libtext-charwidth-perl:amd64    0.04-11build4   installed
+libtext-iconv-perl:amd64        1.7-8.1 installed
+libtext-wrapi18n-perl   0.06-10 installed
+libtinfo6:amd64 6.6+20251231-1  installed
+libtirpc-common 1.3.7-0.1       installed
+libtirpc3t64:amd64      1.3.7-0.1       installed
+libtraceevent1:amd64    1:1.8.7-1       installed
+libtraceevent1-plugin:amd64     1:1.8.7-1       installed
+libtracefs1:amd64       1.8.2-1ubuntu1  installed
+libtss2-esys-3.0.2-0t64:amd64   4.1.3-6 installed
+libtss2-mu-4.0.1-0t64:amd64     4.1.3-6 installed
+libtss2-sys1t64:amd64   4.1.3-6 installed
+libtss2-tcti-cmd0t64:amd64      4.1.3-6 installed
+libtss2-tcti-device0t64:amd64   4.1.3-6 installed
+libtss2-tcti-mssim0t64:amd64    4.1.3-6 installed
+libtss2-tcti-swtpm0t64:amd64    4.1.3-6 installed
+libuchardet0:amd64      0.0.8-2 installed
+libudev1:amd64  259.5-0ubuntu3.4        installed
+libudisks2-0:amd64      2.10.91-1ubuntu2.1      installed
+libunistring5:amd64     1.3-2build1     installed
+libunwind8:amd64        1.8.3-0ubuntu1  installed
+libupower-glib3:amd64   1.91.1-1        installed
+liburcu8t64:amd64       0.15.6-1        installed
+libusb-1.0-0:amd64      2:1.0.29-2build1        installed
+libusbmuxd-2.0-7:amd64  2.1.1-1 installed
+libuuid1:amd64  2.41.3-3ubuntu2.2       installed
+libuv1t64:amd64 1.51.0-2ubuntu1 installed
+libvolume-key1:amd64    0.3.12-10build2 installed
+libwrap0:amd64  7.6.q-36build2  installed
+libx11-6:amd64  2:1.8.13-1ubuntu0.1     installed
+libx11-data     2:1.8.13-1ubuntu0.1     installed
+libxau6:amd64   1:1.0.11-1build2        installed
+libxcb1:amd64   1.17.0-2ubuntu1 installed
+libxdmcp6:amd64 1:1.1.5-2       installed
+libxext6:amd64  2:1.3.4-1build3 installed
+libxkbcommon0:amd64     1.13.1-1        installed
+libxml2-16:amd64        2.15.2+dfsg-0.1ubuntu0.3        installed
+libxmlb2:amd64  0.3.24-2        installed
+libxmlsec1-1:amd64      1.3.9-1 installed
+libxmlsec1-openssl1:amd64       1.3.9-1 installed
+libxmuu1:amd64  2:1.1.3-4       installed
+libxslt1.1:amd64        1.1.45-0.1      installed
+libxtables12:amd64      1.8.11-2ubuntu3 installed
+libxxhash0:amd64        0.8.3-2build1   installed
+libyaml-0-2:amd64       0.2.5-2build3   installed
+libzstd1:amd64  1.5.7+dfsg-3    installed
+linux-base      4.15ubuntu5     installed
+linux-firmware  20260319.git217ca6e4.1ubuntu    installed
+linux-firmware-amd-graphics     20260319.git217ca6e4-0ubuntu3.1 installed
+linux-firmware-amd-misc 20260319.git217ca6e4-0ubuntu1.1 installed
+linux-firmware-broadcom-wireless        20260319.git217ca6e4-0ubuntu1.1 installed
+linux-firmware-intel-graphics   20260319.git217ca6e4-0ubuntu2.1 installed
+linux-firmware-intel-misc       20260319.git217ca6e4-0ubuntu1.2 installed
+linux-firmware-intel-wireless   20260319.git217ca6e4-0ubuntu2.1 installed
+linux-firmware-marvell-prestera 20260319.git217ca6e4-0ubuntu1.2 installed
+linux-firmware-marvell-wireless 20260319.git217ca6e4-0ubuntu1.1 installed
+linux-firmware-mediatek 20260319.git217ca6e4-0ubuntu1.2 installed
+linux-firmware-mellanox-spectrum        20260319.git217ca6e4-0ubuntu1.1 installed
+linux-firmware-misc     20260319.git217ca6e4-0ubuntu2.2 installed
+linux-firmware-netronome        20260319.git217ca6e4-0ubuntu1.1 installed
+linux-firmware-nvidia-graphics  20260319.git217ca6e4-0ubuntu1.1 installed
+linux-firmware-qlogic   20260319.git217ca6e4-0ubuntu1.1 installed
+linux-firmware-qualcomm-graphics        20260319.git217ca6e4-0ubuntu1.1 installed
+linux-firmware-qualcomm-misc    20260319.git217ca6e4-0ubuntu2.1 installed
+linux-firmware-qualcomm-wireless        20260319.git217ca6e4-0ubuntu1.2 installed
+linux-firmware-realtek  20260319.git217ca6e4-0ubuntu1.2 installed
+linux-generic   7.0.0-38.38     installed
+linux-headers-7.0.0-38  7.0.0-38.38     installed
+linux-headers-7.0.0-38-generic  7.0.0-38.38     installed
+linux-headers-generic   7.0.0-38.38     installed
+linux-image-7.0.0-38-generic    7.0.0-38.38     installed
+linux-image-generic     7.0.0-38.38     installed
+linux-image-unsigned-7.0.0-30-generic   7.0.0-30.30     config-files
+linux-libc-dev:amd64    7.0.0-38.38     installed
+linux-main-modules-zfs-7.0.0-30-generic 7.0.0-30.30     config-files
+linux-main-modules-zfs-7.0.0-38-generic 7.0.0-38.38     installed
+linux-modules-7.0.0-30-generic  7.0.0-30.30     config-files
+linux-modules-7.0.0-38-generic  7.0.0-38.38     installed
+linux-perf      7.0.0-38.38     installed
+linux-sysctl-defaults   4.15ubuntu5     installed
+linux-tools-7.0.0-38    7.0.0-38.38     installed
+linux-tools-7.0.0-38-generic    7.0.0-38.38     installed
+linux-tools-common      7.0.0-38.38     installed
+locales 2.43-2ubuntu2.4 installed
+login   1:4.16.0-2+really2.41.3-3ubuntu2.2      installed
+login.defs      1:4.17.4-2ubuntu3       installed
+logrotate       3.22.0-1build1  installed
+logsave 1.47.2-3ubuntu4 installed
+lsb-base        11.6build1      installed
+lsb-release     12.1-2build1    installed
+lshw    02.19.git.2021.06.19.996aaad9c7-2.1ubuntu3      installed
+lsof    4.99.4+dfsg-2build2     installed
+lvm2    2.03.31-2ubuntu3        installed
+lxd-agent-loader        0.13ubuntu0     installed
+lxd-installer   14ubuntu0       installed
+makedumpfile    1:1.7.7-1       installed
+man-db  2.13.1-1build1  installed
+manpages        6.17-1  installed
+manpages-dev    6.17-1  installed
+mawk    1.3.4.20260129-1        installed
+mdadm   4.5-5ubuntu1.1  installed
+media-types     14.0.0build1    installed
+modemmanager    1.25.95-1ubuntu1        installed
+mokutil 0.7.2-2 installed
+motd-news-config        14ubuntu6.2     installed
+mount   2.41.3-3ubuntu2.2       installed
+mtr-tiny        0.95-1.1ubuntu2 installed
+multipath-tools 0.14.3-2ubuntu1 installed
+nano    8.7.1-1ubuntu0.1        installed
+ncurses-base    6.6+20251231-1  installed
+ncurses-bin     6.6+20251231-1  installed
+ncurses-term    6.6+20251231-1  installed
+needrestart     3.11-1ubuntu2   installed
+netbase 6.5build1       installed
+netcat-openbsd  1.234-1 installed
+netplan-generator       1.2-1ubuntu5.1  installed
+netplan.io      1.2-1ubuntu5.1  installed
+networkd-dispatcher     2.2.4-1.1ubuntu1        installed
+nftables        1.1.6-1 installed
+ntfs-3g 1:2022.10.3-5ubuntu1.1  installed
+numactl 2.0.19-1build1  installed
+open-iscsi      2.1.11-3ubuntu3.1       installed
+open-vm-tools   2:13.0.10-1ubuntu1.1    installed
+openssh-client  1:10.2p1-2ubuntu3.8     installed
+openssh-server  1:10.2p1-2ubuntu3.8     installed
+openssh-sftp-server     1:10.2p1-2ubuntu3.8     installed
+openssl 3.5.5-1ubuntu3.7        installed
+openssl-provider-legacy 3.5.5-1ubuntu3.7        installed
+os-prober       1.84ubuntu1     installed
+overlayroot     0.58ubuntu      installed
+packagekit      1.3.4-3ubuntu1.2        installed
+parted  3.6-6   installed
+passwd  1:4.17.4-2ubuntu3       installed
+patch   2.8-2build1     installed
+pci.ids 0.0~2026.02.12-1        installed
+pciutils        1:3.14.0-1build2        installed
+perl    5.40.1-7ubuntu0.3       installed
+perl-base       5.40.1-7ubuntu0.3       installed
+perl-modules-5.40       5.40.1-7ubuntu0.3       installed
+pinentry-curses 1.3.2-3ubuntu1  installed
+plymouth        24.004.60+git20250831.4a3c171d-0ubuntu8 installed
+plymouth-theme-ubuntu-text      24.004.60+git20250831.4a3c171d-0ubuntu8 installed
+pnp.ids 0.394-1build1   installed
+polkitd 127-2ubuntu1.1  installed
+powermgmt-base  1.38ubuntu2     installed
+procps  2:4.0.4-9ubuntu1        installed
+psmisc  23.7-2ubuntu2   installed
+publicsuffix    20260129.1928-1 installed
+python-apt-common       3.1.0ubuntu1.1  installed
+python-babel-localedata 2.17.0-2        installed
+python3 3.14.3-0ubuntu2 installed
+python3-apport  2.34.1-0ubuntu0.1       installed
+python3-apt     3.1.0ubuntu1.1  installed
+python3-attr    25.4.0-1build1  installed
+python3-autocommand     2.2.2-4 installed
+python3-automat 25.4.16-1build1 installed
+python3-babel   2.17.0-2        installed
+python3-bcrypt  5.0.0-3build1   installed
+python3-blinker 1.9.0-2build1   installed
+python3-boto3   1.40.72-1build1 installed
+python3-botocore        1.40.72+repack-1build1  installed
+python3-bpfcc   0.35.0+ds-1ubuntu2      installed
+python3-certifi 2026.1.4+ds-1   installed
+python3-cffi-backend:amd64      2.0.0-3build1   installed
+python3-chardet 5.2.0+dfsg-2build1      installed
+python3-click   8.2.0+0.really.8.1.8-1build1    installed
+python3-commandnotfound 23.04.0build1   installed
+python3-configobj       5.0.9-1build1   installed
+python3-constantly      23.10.4-2build1 installed
+python3-cryptography    46.0.5-1ubuntu2.2       installed
+python3-dateutil        2.9.0-4build1   installed
+python3-dbus    1.4.0-1build2   installed
+python3-debconf 1.5.92  installed
+python3-debian  1.0.1ubuntu2    installed
+python3-distro  1.9.0-1build1   installed
+python3-distro-info     1.15    installed
+python3-distupgrade     1:26.04.27      installed
+python3-gdbm    3.14.3-0ubuntu2 installed
+python3-gi      3.56.2-1        installed
+python3-hamcrest        2.1.0-3 installed
+python3-httplib2        0.22.0-1ubuntu0.1       installed
+python3-hyperlink       21.0.0-6build1  installed
+python3-idna    3.11-1ubuntu0.1 installed
+python3-incremental     24.7.2-4        installed
+python3-inflect 7.5.0-1build1   installed
+python3-jaraco.context  6.0.1-2 installed
+python3-jaraco.functools        4.1.0-1build1   installed
+python3-jaraco.text     4.0.0-1build1   installed
+python3-jinja2  3.1.6-1build1   installed
+python3-jmespath        1.0.1-1build1   installed
+python3-json-pointer    2.4-4   installed
+python3-jsonpatch       1.32-6  installed
+python3-jsonschema      4.19.2-6ubuntu2 installed
+python3-jsonschema-specifications       2023.12.1-4     installed
+python3-jwt     2.10.1-4ubuntu1.2       installed
+python3-launchpadlib    2.1.0-1build1   installed
+python3-lazr.restfulclient      0.14.6-3build1  installed
+python3-lazr.uri        1.0.6-7build1   installed
+python3-linkify-it      2.0.3-1ubuntu3  installed
+python3-magic   2:0.4.27-3build1        installed
+python3-markdown-it     3.0.0-3build1   installed
+python3-markupsafe      3.0.3-1build1   installed
+python3-mdurl   0.1.2-1build1   installed
+python3-minimal 3.14.3-0ubuntu2 installed
+python3-more-itertools  10.8.0-1build1  installed
+python3-netaddr 1.3.0-1build1   installed
+python3-netifaces:amd64 0.11.0-2build7  installed
+python3-netplan 1.2-1ubuntu5.1  installed
+python3-oauthlib        3.3.1-1build1   installed
+python3-openssl 25.3.0-1ubuntu1 installed
+python3-packaging       26.0-1  installed
+python3-passlib 1.9.3-1ubuntu1  installed
+python3-pexpect 4.9-4   installed
+python3-pkg-resources   78.1.1-0.1build1        installed
+python3-problem-report  2.34.1-0ubuntu0.1       installed
+python3-ptyprocess      0.7.0-6build1   installed
+python3-pyasn1  0.6.3-1ubuntu0.1        installed
+python3-pyasn1-modules  0.4.1-2build1   installed
+python3-pygments        2.19.2+dfsg-1   installed
+python3-pyparsing       3.3.2-2 installed
+python3-referencing     0.36.2-1ubuntu2 installed
+python3-requests        2.32.5+dfsg-1ubuntu1.1  installed
+python3-rich    13.9.4-1.2      installed
+python3-rpds-py 0.27.1-2ubuntu3 installed
+python3-s3transfer      0.14.0-1build1  installed
+python3-serial  3.5-2build1     installed
+python3-service-identity        24.2.0-1build1  installed
+python3-setuptools      78.1.1-0.1build1        installed
+python3-six     1.17.0-2build1  installed
+python3-software-properties     0.120.1 installed
+python3-systemd 235-1build9     installed
+python3-twisted 25.5.0-5ubuntu0.1       installed
+python3-typeguard       4.4.4-2 installed
+python3-typing-extensions       4.15.0-2        installed
+python3-uc-micro        1.0.3-1build1   installed
+python3-update-manager  1:26.04.5       installed
+python3-urllib3 2.6.3-1ubuntu1.2        installed
+python3-wadllib 2.0.0-3 installed
+python3-xkit    0.5.0ubuntu8    installed
+python3-yaml    6.0.3-1build1   installed
+python3-zipp    3.23.0-1build1  installed
+python3-zope.interface  8.2-1build1     installed
+python3.14      3.14.4-1ubuntu0.2       installed
+python3.14-gdbm 3.14.4-1ubuntu0.2       installed
+python3.14-minimal      3.14.4-1ubuntu0.2       installed
+readline-common 8.3-4   installed
+rpcsvc-proto    1.4.3-1build1   installed
+rsync   3.4.1+ds1-7ubuntu0.3    installed
+rsyslog 8.2512.0-1ubuntu4.2     installed
+rust-coreutils  0.10.0-1ubuntu2~26.04.1 installed
+sbsigntool      0.9.4-3.1ubuntu9        installed
+screen  4.9.1-3ubuntu2  installed
+secureboot-db   1.9build2       installed
+sed     4.9-2ubuntu1    installed
+sensible-utils  0.0.26build1    installed
+sg3-utils       1.48-3ubuntu3.2 installed
+sg3-utils-udev  1.48-3ubuntu3.2 installed
+sgml-base       1.31+nmu1build1 installed
+shared-mime-info        2.4-5build3     installed
+snapd   2.77.1+ubuntu26.04.2    installed
+software-properties-common      0.120.1 installed
+sos     4.11.2-0ubuntu0.1       installed
+squashfs-tools  1:4.7.5-1       installed
+ssh-import-id   5.11-0ubuntu4   installed
+strace  6.19+ds-0ubuntu5        installed
+sudo    1.9.17p2-1ubuntu3.2     installed
+sudo-common     1.2ubuntu       installed
+sudo-rs 0.2.13-0ubuntu1.2       installed
+sysstat 12.7.7-0ubuntu2 installed
+systemd 259.5-0ubuntu3.4        installed
+systemd-cryptsetup      259.5-0ubuntu3.4        installed
+systemd-hwe-hwdb        259.5.3ubuntu   installed
+systemd-resolved        259.5-0ubuntu3.4        installed
+systemd-sysv    259.5-0ubuntu3.4        installed
+sysvinit-utils  3.15-5ubuntu1   installed
+tar     1.35+dfsg-4ubuntu0.4    installed
+tcl     8.6.16build1    installed
+tcl8.6  8.6.17+dfsg-1build1     installed
+tcpdump 4.99.6-1        installed
+telnet  0.17+2.7-2ubuntu1.1     installed
+thermald        2.5.11-0ubuntu1.1       installed
+thin-provisioning-tools 1.1.0-4ubuntu2  installed
+time    1.9-0.4 installed
+tmux    3.6a-2ubuntu0.1 installed
+tnftp   20260211-1      installed
+tpm-udev        4.1.3-6 installed
+trace-cmd       3.3.3-1ubuntu2  installed
+tzdata  2026e-0ubuntu0.26.04.1  installed
+ubuntu-drivers-common   1:0.10.9        installed
+ubuntu-kernel-accessories       1.570.4 installed
+ubuntu-keyring  2023.11.28.1build1      installed
+ubuntu-minimal  1.570.4 installed
+ubuntu-pro-client       37.2ubuntu0.1   installed
+ubuntu-pro-client-l10n  37.2ubuntu0.1   installed
+ubuntu-release-upgrader-core    1:26.04.27      installed
+ubuntu-server   1.570.4 installed
+ubuntu-server-minimal   1.570.4 installed
+ubuntu-standard 1.570.4 installed
+ucf     3.0052ubuntu1   installed
+udev    259.5-0ubuntu3.4        installed
+udisks2 2.10.91-1ubuntu2.1      installed
+ufw     0.36.2-9build1  installed
+unattended-upgrades     2.12ubuntu9     installed
+unminimize      0.5build1       installed
+update-manager-core     1:26.04.5       installed
+update-notifier-common  3.207.2 installed
+upower  1.91.1-1        installed
+usb-modeswitch  2.6.2-1ubuntu1  installed
+usb-modeswitch-data     20191128-7build1        installed
+usb.ids 2025.12.13-1    installed
+usbmuxd 1.1.1-7 installed
+usbutils        1:019-1 installed
+util-linux      2.41.3-3ubuntu2.2       installed
+util-linux-extra        2.41.3-3ubuntu2.2       installed
+uuid-runtime    2.41.3-3ubuntu2.2       installed
+vim     2:9.1.2141-1ubuntu4.9   installed
+vim-common      2:9.1.2141-1ubuntu4.9   installed
+vim-runtime     2:9.1.2141-1ubuntu4.9   installed
+vim-tiny        2:9.1.2141-1ubuntu4.9   installed
+wget    1.25.0-2ubuntu4.4       installed
+whiptail        0.52.25-1ubuntu3        installed
+wireless-regdb  2026.05.30-0ubuntu1~26.04.1     installed
+xauth   1:1.1.2-1.1build1       installed
+xdg-user-dirs   0.19-1  installed
+xfsprogs        6.18.0-3        installed
+xkb-data        2.46-2  installed
+xml-core        0.19build1      installed
+xxd     2:9.1.2141-1ubuntu4.9   installed
+xz-utils        5.8.3-1 installed
+zerofree        1.1.1-1build6   installed
+zlib1g:amd64    1:1.3.dfsg+really1.3.1-1ubuntu3.1       installed
+zstd    1.5.7+dfsg-3    installed
+
+
+
+
+11- Levantamento de todos os softwares que precisam ser atualizados no servidor?
+
+Todos os softwares 100% atualizados
+
+
+#12 — Levantamento dos serviços em execução
+
+  UNIT                        LOAD   ACTIVE SUB     DESCRIPTION
+  chrony.service              loaded active running chrony, an NTP client/server
+  cron.service                loaded active running Regular background program processing daemon
+  dbus.service                loaded active running D-Bus System Message Bus
+  getty@tty1.service          loaded active running Getty on tty1
+  ModemManager.service        loaded active running Modem Manager
+  multipathd.service          loaded active running Device-Mapper Multipath Device Controller
+  networkd-dispatcher.service loaded active running Dispatcher daemon for systemd-networkd
+  polkit.service              loaded active running Authorization Manager
+  rsyslog.service             loaded active running System Logging Service
+  snapd.service               loaded active running Snap Daemon
+  ssh.service                 loaded active running OpenBSD Secure Shell server
+  systemd-journald.service    loaded active running Journal Service
+  systemd-logind.service      loaded active running User Login Management
+  systemd-networkd.service    loaded active running Network Management
+  systemd-resolved.service    loaded active running Network Name Resolution
+  systemd-udevd.service       loaded active running Rule-based Manager for Device Events and Files
+  udisks2.service             loaded active running Disk Manager
+  unattended-upgrades.service loaded active running Unattended Upgrades Shutdown
+  user@1000.service           loaded active running User Manager for UID 1000
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+19 loaded units listed.
+
+
+#13 — Levantamento dos processos em execução
+
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           2  0.0  0.0      0     0 ?        S    19:41   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [pool_workqueue_release]
+root           4  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-rcu_gp]
+root           5  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-sync_wq]
+root           6  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-kvfree_rcu_reclaim]
+root           7  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-slub_flushwq]
+root           8  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-netns]
+root          10  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/0:0H-kblockd]
+root          11  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [kworker/0:1-cgroup_free]
+root          12  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [kworker/u8:0-ipv6_addrconf]
+root          13  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-mm_percpu_wq]
+root          14  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [ksoftirqd/0]
+root          15  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [rcu_preempt]
+root          16  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [rcu_exp_par_gp_kthread_worker/0]
+root          17  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [rcu_exp_gp_kthread_worker]
+root          18  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [migration/0]
+root          19  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [kprobe-optimizer]
+root          20  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [idle_inject/0]
+root          21  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [cpuhp/0]
+root          22  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [cpuhp/1]
+root          23  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [idle_inject/1]
+root          24  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [migration/1]
+root          25  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [ksoftirqd/1]
+root          26  0.5  0.0      0     0 ?        I    19:41   0:01  \_ [kworker/1:0-events]
+root          27  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/1:0H-kblockd]
+root          28  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [kworker/u9:0-events_unbound]
+root          29  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [kworker/u10:0-events_unbound]
+root          30  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [kdevtmpfs]
+root          31  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-inet_frag_wq]
+root          32  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [rcu_tasks_kthread]
+root          33  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [rcu_tasks_rude_kthread]
+root          34  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [kauditd]
+root          35  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [khungtaskd]
+root          36  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [oom_reaper]
+root          38  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-writeback]
+root          39  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [kworker/u9:2-writeback]
+root          40  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [kcompactd0]
+root          41  0.0  0.0      0     0 ?        SN   19:41   0:00  \_ [ksmd]
+root          42  0.0  0.0      0     0 ?        SN   19:41   0:00  \_ [khugepaged]
+root          43  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-kblockd]
+root          44  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-blkcg_punt_bio]
+root          45  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-kintegrityd]
+root          46  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [irq/9-acpi]
+root          47  0.3  0.0      0     0 ?        I    19:41   0:01  \_ [kworker/1:1-events]
+root          48  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-tpm_dev_wq]
+root          49  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-ata_sff]
+root          50  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-md_bitmap]
+root          51  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-md_llbitmap_io]
+root          52  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-md_llbitmap_unplug]
+root          53  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-edac-poller]
+root          54  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-devfreq_wq]
+root          55  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [watchdogd]
+root          56  0.2  0.0      0     0 ?        I    19:41   0:00  \_ [kworker/u10:1-ext4-rsv-conversion]
+root          57  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-quota_events_unbound]
+root          59  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [kworker/u10:2-events_unbound]
+root          60  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [kswapd0]
+root          61  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [ecryptfs-kthread]
+root          62  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-kthrotld]
+root          63  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-acpi_thermal_pm]
+root          64  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [scsi_eh_0]
+root          65  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-scsi_tmf_0]
+root          66  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [scsi_eh_1]
+root          67  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-scsi_tmf_1]
+root          69  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [kworker/u10:4-ext4-rsv-conversion]
+root          73  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-mld]
+root          74  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-ipv6_addrconf]
+root          75  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [kworker/u8:1-ipv6_addrconf]
+root          76  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/0:1H]
+root          77  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-kstrp]
+root          78  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/1:1H-kblockd]
+root          80  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/u11:0]
+root          81  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/u12:0]
+root          82  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/u13:0]
+root          93  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-charger_manager]
+root         327  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [kworker/0:3-events]
+root         329  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [scsi_eh_2]
+root         330  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-scsi_tmf_2]
+root         405  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-kdmflush/252:0]
+root         439  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [jbd2/dm-0-8]
+root         440  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-ext4-rsv-conversion]
+root         504  0.0  0.0      0     0 ?        I    19:41   0:00  \_ [kworker/u9:3-events_unbound]
+root         536  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [psimon]
+root         556  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-kmpathd]
+root         558  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-kmpath_handlerd]
+root         612  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [psimon]
+root         732  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [irq/18-vmwgfx]
+root         733  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-ttm]
+root         756  0.0  0.0      0     0 ?        S    19:41   0:00  \_ [jbd2/sda2-8]
+root         757  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-ext4-rsv-conversion]
+root         940  0.0  0.0      0     0 ?        I<   19:41   0:00  \_ [kworker/R-cfg80211]
+root           1  1.1  0.4  24824 16180 ?        Ss   19:41   0:04 /usr/lib/systemd/systemd --switched-root --system --deserialize=50
+root         542  0.0  0.4  50408 16240 ?        S<s  19:41   0:00 /usr/lib/systemd/systemd-journald
+root         575  0.0  0.2 279492  9644 ?        SLsl 19:41   0:00 /usr/sbin/multipathd -d -s
+systemd+     593  0.0  0.4  22636 14700 ?        Ss   19:41   0:00 /usr/lib/systemd/systemd-resolved
+root         600  0.1  0.4  39984 14224 ?        Ss   19:41   0:00 /usr/lib/systemd/systemd-udevd
+systemd+     838  0.0  0.3  21432 12180 ?        Ss   19:41   0:00 /usr/lib/systemd/systemd-networkd
+root        1014  0.0  0.0   2888  2008 ?        Ss   19:41   0:00 /bin/sh /usr/lib/systemd/scripts/chronyd-starter.sh -n -F 1
+_chrony     1088  0.0  0.1  20424  6340 ?        S    19:41   0:00  \_ /usr/sbin/chronyd -n -F 1
+_chrony     1118  0.0  0.0  12096  2344 ?        S    19:41   0:00      \_ /usr/sbin/chronyd -n -F 1
+root        1015  0.0  0.1   7060  3428 ?        Ss   19:41   0:00 /usr/sbin/cron -f -P
+message+    1016  0.0  0.1   8996  5600 ?        Ss   19:41   0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root        1022  0.0  0.8  46744 30280 ?        Ss   19:41   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+polkitd     1023  0.0  0.2 306448  8444 ?        Ssl  19:41   0:00 /usr/lib/polkit-1/polkitd --no-debug --log-level=notice
+root        1026  0.2  1.3 1889352 46060 ?       Ssl  19:41   0:00 /usr/lib/snapd/snapd
+root        1029  0.0  0.2  18416  9540 ?        Ss   19:41   0:00 /usr/lib/systemd/systemd-logind
+root        1031  0.0  0.4 543448 15212 ?        Ssl  19:41   0:00 /usr/libexec/udisks2/udisksd
+root        1076  0.0  0.1   8756  5612 ?        Ss   19:41   0:00 login -- senac
+senac       1391  0.0  0.1   8856  6056 tty1     Ss+  19:42   0:00  \_ -bash
+root        1100  0.0  0.9 126116 32944 ?        Ssl  19:41   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root        1106  0.0  0.4 391608 14296 ?        Ssl  19:41   0:00 /usr/sbin/ModemManager
+syslog      1116  0.0  0.1 220548  6236 ?        Ssl  19:41   0:00 /usr/sbin/rsyslogd -n -iNONE
+senac       1368  0.0  0.3  22080 12872 ?        Ss   19:42   0:00 /usr/lib/systemd/systemd --user
+senac       1372  0.0  0.1  23020  4096 ?        S    19:42   0:00  \_ (sd-pam)
+root        1421  0.0  0.2  10744  7768 ?        Ss   19:42   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root        1423  0.0  0.3  18524 12264 ?        Ss   19:42   0:00  \_ sshd-session: senac [priv]
+senac       1472  0.2  0.2  18684  7696 ?        S    19:42   0:00      \_ sshd-session: senac@pts/0
+senac       1473  0.0  0.1   8844  5928 pts/0    Ss   19:42   0:00          \_ -bash
+senac       1545  100  0.1   9764  4680 pts/0    R+   19:47   0:00              \_ ps auxf
+root        1539  0.1  0.2  16528  7568 ?        Ss   19:46   0:00 /usr/lib/systemd/systemd-timedated
+
+
+
+14- Levantamento de todos os gupos do servidor?
+
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+dhcpcd:x:997:997:DHCP Client Daemon:/usr/lib/dhcpcd:/bin/false
+messagebus:x:996:996:System Message Bus:/nonexistent:/usr/sbin/nologin
+systemd-resolve:x:990:990:systemd Resolver:/:/usr/sbin/nologin
+_chrony:x:989:989:Chrony Daemon:/var/lib/chrony:/usr/sbin/nologin
+usbmux:x:100:46:usbmux daemon:/var/lib/usbmux:/usr/sbin/nologin
+polkitd:x:988:988:User for polkitd:/:/usr/sbin/nologin
+syslog:x:101:103::/nonexistent:/usr/sbin/nologin
+uuidd:x:102:104::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:986:986:tcpdump:/nonexistent:/usr/sbin/nologin
+tss:x:985:985:tss user for tpm2:/:/usr/sbin/nologin
+landscape:x:103:106::/var/lib/landscape:/usr/sbin/nologin
+fwupd-refresh:x:984:984:Firmware update daemon:/var/lib/fwupd:/usr/sbin/nologin
+senac:x:1000:1000:Pedro Henrique:/home/senac:/bin/bash
+sshd:x:983:65534:sshd user:/run/sshd:/usr/sbin/nologin
+
+#15 — Levantamento de todos os grupos do servidor
+
+senac@srvpedro:~$ ^C
+-bash: r:/run/sshd:/usr/sbin/nologin: No such file or directory
+senac@srvpedro:~$: command not found
+senac@srvpedro:~$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:998:998:systemd Network Management:/:/usr/sbin/nologin
+dhcpcd:x:997:997:DHCP Client Daemon:/usr/lib/dhcpcd:/bin/false
+messagebus:x:996:996:System Message Bus:/nonexistent:/usr/sbin/nologin
+systemd-resolve:x:990:990:systemd Resolver:/:/usr/sbin/nologin
+_chrony:x:989:989:Chrony Daemon:/var/lib/chrony:/usr/sbin/nologin
+usbmux:x:100:46:usbmux daemon:/var/lib/usbmux:/usr/sbin/nologin
+polkitd:x:988:988:User for polkitd:/:/usr/sbin/nologin
+syslog:x:101:103::/nonexistent:/usr/sbin/nologin
+uuidd:x:102:104::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:986:986:tcpdump:/nonexistent:/usr/sbin/nologin
+tss:x:985:985:tss user for tpm2:/:/usr/sbin/nologin
+landscape:x:103:106::/var/lib/landscape:/usr/sbin/nologin
+fwupd-refresh:x:984:984:Firmware update daemon:/var/lib/fwupd:/usr/sbin/nologin
+senac:x:1000:1000:Pedro Henrique:/home/senac:/bin/bash
+sshd:x:983:65534:sshd user:/run/sshd:/usr/sbin/nologin
+
+
+
+
+
+#16 — Levantamento das conexões estabelecidas do servidor
+
+Recv-Q                        Send-Q                                                 Local Address:Port                                                 Peer Address:Port                         Process
+0                             36                                                      10.24.69.225:22                                                    10.24.69.28:61645
+
+
